@@ -21,6 +21,5 @@ CI Project Overview
   - This runs the container named site and puts it on port 80
 
  View Project
-  - To view the site, I went to localhost:80 
-  - Gives us the following 
+  - To view the site, I went to localhost:80 whcih gives us the following 
   ![Site image](images/image1.png)
