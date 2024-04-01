@@ -1,6 +1,8 @@
 CI Project Overview
  - The objective of this project was to setup  an application in docker and utilize github to automate updating our apache2 website.
 
+ ![Diagram](images/image3.png)
+
  Install Docker
  - Install docker desktop since we are on windows 11
  - Once installed, enable Use the WSL 2 based engine 
@@ -45,7 +47,7 @@ How to authenticate with DockerHub via CLI using Dockerhub credentials
  - Select New Access Token
  - Create the token by selecting the Name and Scope, then click create
  - Note the token so you can put it in github secrets
- ![Token](images/image-2.png)
+ ![Token](images/image2.png)
 
 How to push container image to Dockerhub (without GitHub Actions)
  - docker push Username/project4:tagname
@@ -72,7 +74,6 @@ Behavior of GitHub workflow
    - Login to Docker Hub using the login information given by the secrets
    - Pushes the image to Docker Hub
    - Back tracks and logs back out
-   - See graph for details
 
  - Workflow file
    - other than the hardcoded tag, everything is avaible to use for other projects
