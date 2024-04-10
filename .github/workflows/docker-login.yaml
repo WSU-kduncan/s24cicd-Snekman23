@@ -42,11 +42,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-<<<<<<< HEAD
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/project4:latest
-=======
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
->>>>>>> 34abacc9cc5cf573a827839e78f4c9233d7c34a4
