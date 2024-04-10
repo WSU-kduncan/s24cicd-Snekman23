@@ -11,7 +11,11 @@
 name: Publish Docker image
 
 on:
-  push
+  push:
+    branches:
+      - 'master'
+    tags:
+      - 'v*.*.*'
 
 jobs:
   push_to_registry:
@@ -27,7 +31,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
          images: ${{ secrets.DOCKER_USERNAME }}/project4
-         tags: 'v*.*.*'
+         tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
 
       - 
         name: Log in to Docker Hub
@@ -45,4 +54,3 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          
