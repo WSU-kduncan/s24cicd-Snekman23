@@ -11,12 +11,8 @@
 name: Publish Docker image
 
 on:
-  push:
-    branches:
-      - 'master'
-    tags:
-      - 'v*.*.*'
-      
+  push
+
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -31,6 +27,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
          images: ${{ secrets.DOCKER_USERNAME }}/project4
+         tags: 'v*.*.*'
 
       - 
         name: Log in to Docker Hub
