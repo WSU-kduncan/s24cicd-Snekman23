@@ -36,4 +36,4 @@ jobs:
           tags: |
             latest
             ${{ github.ref }}
-            ${{ steps.meta.outputs.tags }}
+            ${{ steps.docker_build.outputs.digest }}
