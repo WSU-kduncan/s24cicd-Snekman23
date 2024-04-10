@@ -33,4 +33,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: snakeman23/project4:latest
+          tags: |
+            latest
+            ${{ github.ref }}
+            ${{ steps.meta.outputs.tags }}
