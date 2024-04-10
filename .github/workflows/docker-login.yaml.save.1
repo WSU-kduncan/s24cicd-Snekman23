@@ -21,32 +21,22 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      - 
-        name: Docker Meta 
-        id: Meta
-        uses: docker/metadata-action@v5
-        with:
-         images: ${{ secrets.DOCKER_USERNAME }}/project4
-         tags: 'v*.*.*'
-
-      - 
-        name: Log in to Docker Hub
+      - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - 
-        name: Build and push Docker image
-        uses: docker/build-push-action@v4
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: my-docker-hub-namespace/my-docker-hub-repository
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
           file: ./Dockerfile
-<<<<<<< HEAD
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/project4:latest
-=======
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
->>>>>>> 34abacc9cc5cf573a827839e78f4c9233d7c34a4
+          tags: 
