@@ -27,8 +27,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
          images: ${{ secrets.DOCKER_USERNAME }}/project4
-         tags: 'v*.*.*'
-
+         tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
       - 
         name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
