@@ -43,22 +43,27 @@ Container restart script
 ![restart](image-1.png)
 
 
-Setting up a webhook on the instance
-How to install adnanh's webhook to the instance
-How to start the webhook
-since our instance's reboot, we need to handle this
 
+Setting up a webhook listener on the instance
 
-webhook task definition file
+ - How to install adnanh's webhook to the instance
+   - 
+ - webhook task definition file
+
 Description of what it does
 Where it should be on the instance (if someone were to use your setup)
-How to configure GitHub OR DockerHub to message the listener
+ADD your webhook definition file to your repository
+How to start the webhook
 
+How to modify/ create a webhook service file such that your webhook listener is listening as soon as the system is booted
+
+include commands to reload the service respective to files changed (webhook service file versus hook definition file)
+ADD your webhook service file to your repository
+How to configure GitHub OR DockerHub to message the listener
 
 Provide proof that the CI & CD workflow work. This means:
 
 starting with a commit that is a change, taging the commit, pushing the tag
 Showing your GitHub workflow returning a message of success.
 Showing DockerHub has freshly pushed images.
-Showing the instance that you are deploying to has the container updated.
-Proof can be provided by either demonstrating to me in person OR by creating a video of the process. If you go the video route and your file is too large for GitHub, submit it to the "Project 5 - Proof of Flow" Dropbox on Pilot
+Showing the instance that you are deploying to has webhook logs indicating the payload was recieved and the container has updated.
