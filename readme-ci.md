@@ -77,3 +77,4 @@ Behavior of GitHub workflow
  - Workflow file
    - other than the hardcoded tag, everything is avaible to use for other projects
    - uses the github secrets for the username and password
+   - uses the sercrets to note the project file in dockerhub
