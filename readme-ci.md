@@ -38,7 +38,6 @@ Process to create public repo in DockerHub
 ![RepoPublic](images/image.png)
 
 
-
 How to authenticate with DockerHub via CLI using Dockerhub credentials
  - Will need to get a token so we can sign into docker via cli
  - Select Profile
