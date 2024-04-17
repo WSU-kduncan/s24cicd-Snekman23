@@ -15,5 +15,6 @@ if [ "$container_status" != "true" ]; then
   exit 1
 fi
 
+
 # Else exit
 exit 0
