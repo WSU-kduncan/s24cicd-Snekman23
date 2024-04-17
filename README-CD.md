@@ -1,5 +1,8 @@
 CD Project Overview
- - The objective of this project was to 
+ - The objective of this project was to prepare a webhook so changes I make to the website in github will update docker and have that change show up on the website by restarting the container
+ - See diagram for workflow
+
+ ![diagram](images/Diagram.png)
 
 How to generate a tag in git / GitHub
  - git tag v1.0.0
@@ -32,7 +35,7 @@ How to install Docker to your instance
  - Run Hello world
    - sudo docker run hello-world
 
-![HelloWorld](image.png)
+![HelloWorld](images/CDimage.png)
 
 Container restart script 
 - Located in deployment folder
@@ -40,7 +43,7 @@ Container restart script
 - If its not running, it doesn't restart anything and fails.
 - Else it restarts
 
-![restart](image-1.png)
+![restart](images/CDimage-1.png)
 
 
 
@@ -67,30 +70,30 @@ Proof that the CI & CD workflow work.
    - I added a second similey face to show up on a button that was originally labeled home
    -  Looks like :D
 
-![Commit_tag_push](image-2.png)
+![Commit_tag_push](images/CDimage-2.png)
 
 GitHub workflow returning a message of success.
   - Workflow from project 4 gave all checkmarks
 
-![workflow](image-3.png)
+![workflow](images/CDimage-3.png)
 
 Showing DockerHub has freshly pushed images.
  - Both latest and 1.1.7 is updated
 
-![docker](image-4.png)
+![docker](images/CDimage-4.png)
 
 Showing the instance that you are deploying to has webhook logs 
   - Webhook is started and signal watcher starts
   - Webhook receives a request
   - Starts the restart-container.sh and restarts the site
 
-![webhook](image-5.png)
+![webhook](images/CDimage-5.png)
 
 Payload was recieved and the container has updated
   - Before the push
 
-  ![after](image-7.png)
+  ![after](images/CDimage-7.png)
 
   - After the push
 
-  ![before](image-6.png)
+  ![before](images/CDimage-6.png)
