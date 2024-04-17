@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# Restart container
-docker restart site
+# Stop and remove container
+docker stop site
+docker remove site
 
-exit 0
+#Pull fresh
+docker pull snakeman23/project4:latest
+
+#Run new
+docker run -d -p 80:80 --name site -- restart always snakeman23/project4:latest
