@@ -45,25 +45,52 @@ Container restart script
 
 
 Setting up a webhook listener on the instance
-
  - How to install adnanh's webhook to the instance
-   - 
+   - sudo apt-get install webhook
  - webhook task definition file
+   - "id": "restart-container",
+   -   "execute-command": "/home/ubuntu/deployment/restart-container.sh",
+   - "command-working-directory": "/home/ubuntu"
+  
 
 Description of what it does
-Where it should be on the instance (if someone were to use your setup)
-ADD your webhook definition file to your repository
-How to start the webhook
+ - hooks.json located in the home folder
+ - When it gets a signal, runs the container restart file labeled restart-container.sh
+ - Stops, removes, and restarts the container
+ - Can be manually started by going to http://44.195.201.239:9000/hooks/restart-container
+ - Is started by running the following: webhook -hooks hooks.json -verbose
+ - This looks for the webhook signal to trigger the restart script
 
-How to modify/ create a webhook service file such that your webhook listener is listening as soon as the system is booted
+Proof that the CI & CD workflow work. 
+ - Commit that is a change, taging the commit, pushing the tag
+   - Ignore the mistype of v1.1.6
+   - I added a second similey face to show up on a button that was originally labeled home
+   -  Looks like :D
 
-include commands to reload the service respective to files changed (webhook service file versus hook definition file)
-ADD your webhook service file to your repository
-How to configure GitHub OR DockerHub to message the listener
+![Commit_tag_push](image-2.png)
 
-Provide proof that the CI & CD workflow work. This means:
+GitHub workflow returning a message of success.
+  - Workflow from project 4 gave all checkmarks
 
-starting with a commit that is a change, taging the commit, pushing the tag
-Showing your GitHub workflow returning a message of success.
+![workflow](image-3.png)
+
 Showing DockerHub has freshly pushed images.
-Showing the instance that you are deploying to has webhook logs indicating the payload was recieved and the container has updated.
+ - Both latest and 1.1.7 is updated
+
+![docker](image-4.png)
+
+Showing the instance that you are deploying to has webhook logs 
+  - Webhook is started and signal watcher starts
+  - Webhook receives a request
+  - Starts the restart-container.sh and restarts the site
+
+![webhook](image-5.png)
+
+Payload was recieved and the container has updated
+  - Before the push
+
+  ![after](image-7.png)
+
+  - After the push
+
+  ![before](image-6.png)

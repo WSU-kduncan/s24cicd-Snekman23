@@ -1,0 +1,8 @@
+[
+    {
+      "id": "restart-container",
+      "execute-command": "/home/ubuntu/deployment/restart-container.sh",
+      "command-working-directory": "/home/ubuntu"
+    }
+  ]
+  
